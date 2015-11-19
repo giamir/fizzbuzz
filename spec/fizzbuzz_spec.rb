@@ -1,16 +1,25 @@
 require 'fizzbuzz'
 
 describe 'fizzbuzz' do
-  it 'returns "fizz" when passed 3' do
-    expect(fizzbuzz(3)).to eq 'fizz'
+
+  100.times do |n|
+    if n % 3 == 0 && n % 5 == 0
+      it 'returns "fizzbuzz" when passed a number that is multiple of both 3 and 5' do
+         expect(fizzbuzz(n)).to eq 'fizzbuzz'
+      end
+    elsif n % 3 == 0
+      it 'returns "fizz" when passed a number that is a multiple of 3' do
+        expect(fizzbuzz(n)).to eq 'fizz'
+      end
+    elsif n % 5 == 0
+      it 'returns "buzz" when passed a number that is a multiple of 5' do
+        expect(fizzbuzz(n)).to eq 'buzz'
+      end
+    else
+      it "returns given number if not multiple of 3 or 5" do
+        expect(fizzbuzz(n)).to eq n
+      end
+    end
   end
-  it 'returns "buzz" when passed 5' do
-    expect(fizzbuzz(5)).to eq 'buzz'
-  end
-  it 'returns "fizzbuzz" when passed 15' do
-    expect(fizzbuzz(15)).to eq 'fizzbuzz'
-  end
-  it "returns 1 when passed 1" do
-    expect(fizzbuzz(1)).to eq 1
-  end
+
 end
